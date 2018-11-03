@@ -1,4 +1,4 @@
-import { NoteController } from './note-controller';
+import { NoteController } from "./note-controller";
 
 const noteFrequencies = {
   c4: 261.6,
@@ -14,16 +14,28 @@ const noteFrequencies = {
 };
 
 const keys = {
-  65: { sound: { frequency: noteFrequencies.c4 } },
-  83: { sound: { frequency: noteFrequencies.d4 } },
-  68: { sound: { frequency: noteFrequencies.e4 } },
-  70: { sound: { frequency: noteFrequencies.f4 } },
-  71: { sound: { frequency: noteFrequencies.g4 } },
-  72: { sound: { frequency: noteFrequencies.a4 } },
-  74: { sound: { frequency: noteFrequencies.b4 } },
-  75: { sound: { frequency: noteFrequencies.c5 } },
-  76: { sound: { frequency: noteFrequencies.d5 } },
-  186: { sound: { frequency: noteFrequencies.e5 } }
+  // q .. o
+  81: { sound: { frequency: noteFrequencies.c4, type: "triangle" } },
+  87: { sound: { frequency: noteFrequencies.d4, type: "triangle" } },
+  69: { sound: { frequency: noteFrequencies.e4, type: "triangle" } },
+  82: { sound: { frequency: noteFrequencies.f4, type: "triangle" } },
+  84: { sound: { frequency: noteFrequencies.g4, type: "triangle" } },
+  89: { sound: { frequency: noteFrequencies.a4, type: "triangle" } },
+  85: { sound: { frequency: noteFrequencies.b4, type: "triangle" } },
+  73: { sound: { frequency: noteFrequencies.c5, type: "triangle" } },
+  79: { sound: { frequency: noteFrequencies.d5, type: "triangle" } },
+  80: { sound: { frequency: noteFrequencies.e5, type: "triangle" } },
+  // a .. ;
+  65: { sound: { frequency: noteFrequencies.c4, type: "sine" } },
+  83: { sound: { frequency: noteFrequencies.d4, type: "sine" } },
+  68: { sound: { frequency: noteFrequencies.e4, type: "sine" } },
+  70: { sound: { frequency: noteFrequencies.f4, type: "sine" } },
+  71: { sound: { frequency: noteFrequencies.g4, type: "sine" } },
+  72: { sound: { frequency: noteFrequencies.a4, type: "sine" } },
+  74: { sound: { frequency: noteFrequencies.b4, type: "sine" } },
+  75: { sound: { frequency: noteFrequencies.c5, type: "sine" } },
+  76: { sound: { frequency: noteFrequencies.d5, type: "sine" } },
+  186: { sound: { frequency: noteFrequencies.e5, type: "sine" } }
 };
 
 // Set up canvas
@@ -43,6 +55,7 @@ const drawables = new Set();
 const playingByKey = {};
 
 window.addEventListener("keydown", event => {
+  console.log(event.keyCode);
   const config = keys[event.keyCode];
 
   // Key down, we are playing already
